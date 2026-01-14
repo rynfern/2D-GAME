@@ -113,6 +113,18 @@ chestClosedImg.src = "assets/chest_close.png";
 const chestOpenImg = new Image();
 chestOpenImg.src = "assets/chest_open.png";
 
+let imagesLoaded = 0;
+const TOTAL_IMAGES = 9;
+
+function onImageLoad() {
+  imagesLoaded++;
+  if (imagesLoaded === TOTAL_IMAGES) {
+    findStartPosition("Q", queen);
+    findStartPosition("K", king);
+    redraw();
+  }
+}
+
 
 // reusable function to find start position
 function findStartPosition(symbol, character) {
@@ -570,20 +582,16 @@ function handleKeyDown(event) {
 }
 
 // wait for images to load
-queenImg.onload = function () {
-  kingImg.onload = function () {
-    chestClosedImg.onload = function () {
-      chestOpenImg.onload = function () {
+grass.onload = onImageLoad;
+flower_grass_1.onload = onImageLoad;
+flower_grass_2.onload = onImageLoad;
+bush.onload = onImageLoad;
+wall.onload = onImageLoad;
+queenImg.onload = onImageLoad;
+kingImg.onload = onImageLoad;
+chestClosedImg.onload = onImageLoad;
+chestOpenImg.onload = onImageLoad;
 
-        findStartPosition("Q", queen);
-        findStartPosition("K", king);
-
-        redraw();
-
-      };
-    };
-  };
-};
 
 
 document.addEventListener("keydown", handleKeyDown);
