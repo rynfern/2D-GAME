@@ -73,13 +73,13 @@ ctx.imageSmoothingEnabled = false;
 canvas.width = maze[0].length * tileSize;
 canvas.height = maze.length * tileSize;
 
-// create queen (tia)
+// create queen 
 const queen = {
   x: 0,
   y: 0
 };
 
-// create king (ryan)
+// create king 
 const king = {
   x: 0,
   y: 0
@@ -102,10 +102,10 @@ const wall = new Image();
 wall.src = "assets/wall.png";
 
 const queenImg = new Image();
-queenImg.src = "assets/queen.png"; // tia sprite
+queenImg.src = "assets/queen.png"; // queen sprite
 
 const kingImg = new Image();
-kingImg.src = "assets/king.png"; // ryan sprite (goal)
+kingImg.src = "assets/king.png"; // king sprite (goal)
 
 const chestClosedImg = new Image();
 chestClosedImg.src = "assets/chest_close.png";
@@ -172,7 +172,7 @@ function drawMap() {
   }
 }
 
-// draw queen (tia)
+// draw queen
 function drawQueen() {
   ctx.drawImage(
     queenImg,
@@ -183,7 +183,7 @@ function drawQueen() {
   );
 }
 
-// draw king (ryan)
+// draw king 
 function drawKing() {
   ctx.drawImage(
     kingImg,
