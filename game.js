@@ -353,7 +353,12 @@ function getTileAt(x, y) {
 
 function redraw() {
 
+  // do not draw anything until images are loaded
+  if (imagesLoaded < TOTAL_IMAGES) return;
+
+  // START SCREEN
   if (!gameStarted) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawStartScreen();
     return;
   }
@@ -365,25 +370,22 @@ function redraw() {
   drawQueen();
   drawUI();
 
-  // WIN SCREEN HAS HIGHEST PRIORITY
   if (winScreenActive) {
     drawWinScreen();
     return;
   }
 
-
-  // CHEST SCREEN HAS PRIORITY
   if (chestScreenActive) {
     drawChestScreen();
     return;
   }
 
-  // PAUSE SCREEN
   if (pauseScreenActive) {
     drawPauseScreen();
     return;
   }
 }
+
 
 
 function getOrdinal(n) {
